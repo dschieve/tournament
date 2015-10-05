@@ -17,7 +17,7 @@ Github location:
 files included:
 
 	tournament.sql (database and table definitions)
-	tournament.py (run module)
+	tournament.py (python functions)
 	tournament_test.py (test module - provided)
 	README.txt (this file)
 

@@ -14,7 +14,8 @@ Github location:
 
 	https://github.com/dschieve/tournament.git
 
-files included:
+
+Files included:
 
 	tournament.sql (database and table definitions)
 	tournament.py (python functions)

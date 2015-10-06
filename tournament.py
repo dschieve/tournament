@@ -75,14 +75,16 @@ def playerStandings():
     """
     db = connect()
     c = db.cursor()
-    c.execute("""select p.player_id as player_id, p.name as name,
-    (select count(winner) from matches where winner=p.player_id) as wins,
-    (select count(*) from matches
-    where loser=p.player_id or winner=p.player_id) as matches
-    from players p where p.player_id
-    IN (select player_id from players order by player_id)
-    group by p.player_id
-    order by wins desc""")
+    c.execute("""
+        SELECT p.player_id AS player_id, p.name AS name,
+            (SELECT count(winner) FROM matches
+             WHERE winner=p.player_id) AS wins,
+            (SELECT count(*) FROM matches
+             WHERE loser=p.player_id OR winner=p.player_id) AS matches
+        FROM players p
+        GROUP BY p.player_id
+        ORDER BY wins DESC
+    """)
 
     results = c.fetchall()
 

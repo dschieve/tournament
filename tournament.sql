@@ -11,8 +11,14 @@
 DROP TABLE if exists matches;
 DROP TABLE if exists players;
 
-CREATE TABLE players(player_id serial NOT NULL PRIMARY KEY,name text NOT NULL);
+CREATE TABLE players (
+    player_id serial NOT NULL PRIMARY KEY,
+    name text NOT NULL
+);
 
 
-CREATE TABLE matches(match_id serial NOT NULL PRIMARY KEY,winner integer references players(player_id),loser integer references players(player_id));
-
+CREATE TABLE matches (
+    match_id serial NOT NULL PRIMARY KEY,
+    winner integer REFERENCES players(player_id),
+    loser integer REFERENCES players(player_id)
+);
